@@ -17,5 +17,9 @@
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="C:\Microsoft\Xamarin\NuGet\xamarin.forms\4.6.0.1141\buildTransitive\Xamarin.Forms.props" Condition="Exists('C:\Microsoft\Xamarin\NuGet\xamarin.forms\4.6.0.1141\buildTransitive\Xamarin.Forms.props')" />
+    <Import Project="$(NuGetPackageRoot)grpc.tools\2.32.0\build\Grpc.Tools.props" Condition="Exists('$(NuGetPackageRoot)grpc.tools\2.32.0\build\Grpc.Tools.props')" />
   </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgGrpc_Tools Condition=" '$(PkgGrpc_Tools)' == '' ">C:\Users\Vitya\.nuget\packages\grpc.tools\2.32.0</PkgGrpc_Tools>
+  </PropertyGroup>
 </Project>

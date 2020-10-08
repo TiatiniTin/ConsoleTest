@@ -137,12 +137,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Place_Rating\Place_Rating.csproj">
-      <Project>{234EBEEC-E05A-4D5B-BF09-7DF3A6D46DEF}</Project>
-      <Name>Place_Rating</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\fon.png" />
   </ItemGroup>
 </Project>

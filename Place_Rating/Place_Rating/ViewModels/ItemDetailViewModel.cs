@@ -5,6 +5,9 @@ using BoxProtocol.Models;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using BoxProtocol;
+using Grpc.Core;
+using BoxProtocol.Interfaces;
+using MagicOnion.Client;
 
 namespace Place_Rating.ViewModels
 {
@@ -115,18 +118,19 @@ namespace Place_Rating.ViewModels
         {
             try
             {
-                var DataStore = new ServerDB();
+                var channel = new Channel("localhost", 12345, ChannelCredentials.Insecure);
+                var DataStore = MagicOnionClient.Create<IServerDB>(channel);
+                //var DataStore = new ServerDB();
 
                 Item item = await DataStore.Get(itemId);
                 Id = item.Id;
-                Name = item.Name;
+                //Name = item.Name;
+                /*Place_image_path = item.Place_image_path;
                 Place_name = item.Place_name;
+                Place_rating = item.Place_rating;
                 Place_location = item.Place_location;
                 Place_description = item.Place_description;
-                Place_rating = item.Place_rating;
-                Place_image_path = item.Place_image_path;
-                Time_created = item.Time_created;
-
+                Time_created = item.Time_created;*/
             }
             catch (Exception)
             {

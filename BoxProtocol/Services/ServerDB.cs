@@ -14,13 +14,6 @@ namespace BoxProtocol
 {
     public class ServerDB : ServiceBase<IServerDB>, IServerDB
     {
-        //readonly List<Item> items;
-
-        /*private ServerDB serverDB;
-        public ServerDB DataStore
-        {
-            get { return serverDB; }
-        }*/
         private static bool Initialized;
         private static ElasticClient _client;
         public static ElasticClient Client()

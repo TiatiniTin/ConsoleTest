@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using BoxProtocol.Models;
-using BoxProtocol;
+using BoxProtocol.Interfaces;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -128,23 +128,26 @@ namespace Place_Rating.ViewModels
 
         private async void OnSave()
         {
+            var channel = new Channel("localhost", 12345, ChannelCredentials.Insecure);
+            var DataStore = MagicOnionClient.Create<IServerDB>(channel);
+
             Item newItem = new Item()
             {
                 Id = Guid.NewGuid().ToString(),
-                Name = Name,
+                //Name = Name,
+                /*Place_image_path = Place_image_path,
                 Place_name = Place_name,
-                Place_location = Place_location,
                 Place_rating = Place_rating,
-                Place_description = Place_description,
-                Place_image_path = Place_image_path,
-                Time_created = Time_created
+                Place_location = Place_location,
+                Place_description = Place_description,             
+                Time_created = Time_created*/
             };
 
             //await DataStore.AddItemAsync(newItem);
 
             //var channel = new Channel("localhost", 12345, ChannelCredentials.Insecure);
             //var client = MagicOnionClient.Create<IServerDB>(channel);
-            var DataStore = new ServerDB();
+            //var DataStore = new ServerDB();
             await DataStore.Add(newItem);
    
 
